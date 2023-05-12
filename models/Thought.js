@@ -1,5 +1,5 @@
-import mongoose from "mongoose";
-const { Schema, model, SchemaTypes } = mongoose;
+const { Schema, model, SchemaTypes } = require("mongoose");
+const reactionSchema = require("./Reaction");
 
 const ThoughtSchema = new Schema({
   thoughtText: { type: String, required: true, minlength: 1, maxlength: 280 },
@@ -9,8 +9,8 @@ const ThoughtSchema = new Schema({
     get: (createdAtVal) => dateFormat(createdAtVal),
   },
   username: { type: String, required: true },
-  reactions: [ReactionSchema],
+  reactions: [reactionSchema],
 });
 
 const Thought = model("Thought", ThoughtSchema);
-export default Thought;
+module.exports = Thought;

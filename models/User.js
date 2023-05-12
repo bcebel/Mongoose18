@@ -1,5 +1,4 @@
-import mongoose from "mongoose";
-const { Schema, model } = mongoose;
+const { Schema, model } = require("mongoose");
 
 const userSchema = new Schema({
   username: { type: String, required: true, unique: true, trim: true },
@@ -8,4 +7,4 @@ const userSchema = new Schema({
   friends: [{ type: Schema.Types.ObjectId, ref: "User" }],
 });
 const User = model("User", userSchema);
-export default User;
+module.exports = User;

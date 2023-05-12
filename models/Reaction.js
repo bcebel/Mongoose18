@@ -21,3 +21,5 @@ const reactionSchema = new Schema({
     get: (createdAtVal) => dateFormat(createdAtVal),
   },
 });
+
+module.exports = reactionSchema;
