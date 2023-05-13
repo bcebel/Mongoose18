@@ -44,7 +44,6 @@ module.exports = thoughtController = {
         { $push: { thoughts: thought._id } },
         { new: true }
       );
-
       if (!user) {
         return res.status(404).json({ message: "No user found with this id!" });
       }
@@ -95,7 +94,7 @@ module.exports = thoughtController = {
 
   async addReaction(req, res) {
     try {
-      const reaction = await thought.findOneAndUpdate(
+      const reaction = await Thought.findOneAndUpdate(
         { _id: req.params.thoughtId },
         { $push: { reactions: req.body } },
         { new: true, runValidators: true }
